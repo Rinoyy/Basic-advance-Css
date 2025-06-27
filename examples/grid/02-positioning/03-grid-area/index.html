@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Struktur Grid Sederhana</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: 250px 1fr 200px;
+        grid-template-rows: 60px 1fr auto;
+        grid-template-areas:
+          "sidebar nav-bar nav-bar"
+          "sidebar main ads"
+          "footer footer footer";
+        height: 100vh;
+        gap: 5px;
+      }
+      .nav-bar {
+        grid-area: nav-bar;
+        background: #3498db;
+        color: white;
+        padding: 15px;
+        text-align: center;
+      }
+      .main {
+        background: #abef2d;
+        grid-area: main;
+        padding: 15px;
+      }
+      .ads {
+        background: #abef2d;
+        grid-area: ads;
+        padding: 15px;
+      }
+
+      .sidebar {
+        grid-area: sidebar;
+        background: #95a5a6;
+        color: white;
+        padding: 20px;
+      }
+      .footer {
+        grid-area: footer;
+        background: #2c3e50;
+        color: white;
+        padding: 15px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav-bar">
+        <h2>Navigation Bar</h2>
+        <p>Area untuk menu navigasi</p>
+      </div>
+
+      <div class="sidebar">
+        <h3>Sidebar</h3>
+        <p>Area untuk widget, menu tambahan, atau informasi pendukung</p>
+        <ul>
+          <li>Link 1</li>
+          <li>Link 2</li>
+          <li>Link 3</li>
+        </ul>
+      </div>
+      <div class="main">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat vero, quod mollitia rerum enim cupiditate exercitationem. Magnam quas dicta eaque rem, dolor tempore ullam, sunt consectetur fuga totam quis dignissimos?
+      </div>
+      <div class="ads">ads</div>
+
+      <div class="footer">
+        <p>Footer - Area untuk copyright, links, dll</p>
+      </div>
+    </div>
+  </body>
+</html>

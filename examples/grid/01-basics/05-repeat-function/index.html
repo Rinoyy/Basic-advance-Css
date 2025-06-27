@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<title>auto-fit vs auto-fill demo</title>
+<style>
+  :root {
+    --size: 150px;      /* lebar minimum tiap kolom */
+  }
+
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 2rem;
+    display: grid;
+    gap: 4rem;
+  }
+
+  /* —— GRID DENGAN auto-fit —— */
+  .grid-fit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--size), 1fr));
+    gap: .75rem;
+    border: 3px solid #3fb;
+    padding: .75rem;
+  }
+
+  /* —— GRID DENGAN auto-fill —— */
+  .grid-fill {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--size), 1fr));
+    gap: .75rem;
+    border: 3px solid #f63;
+    padding: .75rem;
+  }
+
+  /* kotak item */
+  .item {
+    background: #aaf;
+    border: 2px solid #48f;
+    border-radius: 6px;
+    padding: 1.5rem 0;
+    text-align: center;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<h2>repeat(<strong>auto-fit</strong>, …)</h2>
+<section class="grid-fit">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+  <div class="item">5</div>
+  <div class="item">6</div>
+  <div class="item">6</div>
+  <div class="item">6</div>
+  <div class="item">6</div>
+
+</section>
+
+<h2>repeat(<strong>auto-fill</strong>, …)</h2>
+<section class="grid-fill">
+  <div class="item">1</div>
+
+
+</section>
+
+</body>
+</html>

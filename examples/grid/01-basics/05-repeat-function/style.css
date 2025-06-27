@@ -1,0 +1,31 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  padding: 2rem;
+  margin-top: 2rem;
+  display: grid;
+  width: 50vw;
+  background-color: blanchedalmond;
+  gap: 1rem;
+  /* grid-template-columns: repeat(3, 1fr); */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
+}
+
+.container .card {
+  display: flex;
+  background-color: rgb(138, 227, 120);
+  padding: 2rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Layout Grid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        h2 {
+            color: #333;
+            margin-top: 30px;
+        }
+        
+        .container {
+            display: grid;
+            border: 4px solid gray;
+            border-radius: 12px;
+            padding: 1rem;
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 1rem;
+            margin-bottom: 30px;
+            background: white;
+        }
+
+        .container div {
+            border: 2px red solid;
+            padding: 1rem;
+            margin: 1rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            background: #fff5f5;
+        }
+
+        .item-a {
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+        .item-b {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .item-d {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+        /* .item-e {
+            grid-column: span 1;
+            grid-row: span 1;
+        } */
+        .item-f {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+        .item-g {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+        
+        /* Visualisasi untuk penjelasan */
+        .explanation {
+            background: #e8f4f8;
+            padding: 15px;
+            border-left: 4px solid #2196F3;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .grid-visual {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border: 2px dashed #ccc;
+        }
+        
+        .cell {
+            height: 60px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            background: white;
+        }
+        
+        .cell.item-a { background: #ffebee; }
+        .cell.item-b { background: #e3f2fd; }
+        .cell.item-d { background: #f3e5f5; }
+        .cell.item-e { background: #e8f5e8; }
+        .cell.item-f { background: #fff3e0; }
+        .cell.item-g { background: #fce4ec; }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        .table th {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Analisis Layout Grid Anda</h1>
+    
+    <h2>📋 Layout Actual (Hasil Kode Anda)</h2>
+    <div class="container">
+        <div class="item-a">1</div>
+        <div class="item-b">2</div>
+        <!-- <div class="item-c">3</div> -->
+        <div class="item-d">4</div>
+        <!-- <div class="item-e">5</div> -->
+        <div class="item-f">6</div>
+        <div class="item-g">7</div>
+    </div>
+    
+    <div class="explanation">
+        <strong>✅ YA, SUSUNAN ANDA BENAR!</strong><br>
+        Inilah bagaimana browser akan menempatkan setiap item berdasarkan span yang Anda tentukan.
+    </div>
+    
+    <h2>🗺️ Visualisasi Grid (4 kolom)</h2>
+    <div class="grid-visual">
+        <div class="cell item-a">Item A<br>(span 1)</div>
+        <div class="cell item-b">Item B (span 2)</div>
+        <div class="cell item-b"></div>
+        <div class="cell item-d">Item D<br>(span 1)</div>
+        
+        <div class="cell item-e">Item E<br>(span 1)</div>
+        <div class="cell item-f">Item F<br>(span 1)</div>
+        <div class="cell item-g">Item G (span 2)</div>
+        <div class="cell item-g"></div>
+    </div>
+    
+    <h2>📊 Breakdown Per Baris</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Baris</th>
+                <th>Kolom 1</th>
+                <th>Kolom 2</th>
+                <th>Kolom 3</th>
+                <th>Kolom 4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Baris 1</strong></td>
+                <td style="background: #ffebee;">Item A<br>(span 1)</td>
+                <td style="background: #e3f2fd;" colspan="2">Item B (span 2)</td>
+                <td style="background: #f3e5f5;">Item D<br>(span 1)</td>
+            </tr>
+            <tr>
+                <td><strong>Baris 2</strong></td>
+                <td style="background: #e8f5e8;">Item E<br>(span 1)</td>
+                <td style="background: #fff3e0;">Item F<br>(span 1)</td>
+                <td style="background: #fce4ec;" colspan="2">Item G (span 2)</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h2>🔄 Flow Otomatis Browser</h2>
+    <div class="explanation">
+        <strong>Begini cara browser menempatkan item:</strong><br>
+        1. <strong>Item A (span 1):</strong> Kolom 1<br>
+        2. <strong>Item B (span 2):</strong> Kolom 2-3 (butuh 2 kolom)<br>
+        3. <strong>Item D (span 1):</strong> Kolom 4 (masih muat di baris 1)<br>
+        4. <strong>Item E (span 1):</strong> Kolom 1 (baris baru karena baris 1 penuh)<br>
+        5. <strong>Item F (span 1):</strong> Kolom 2<br>
+        6. <strong>Item G (span 2):</strong> Kolom 3-4 (butuh 2 kolom)<br>
+    </div>
+    
+    <h2>🎯 Poin Penting</h2>
+    <div class="explanation">
+        <strong>Kenapa Item C tidak ada?</strong><br>
+        • Anda mengkomentari <code>&lt;div class="item-c"&gt;3&lt;/div&gt;</code><br>
+        • Jadi Item D langsung mengisi posisi setelah Item B<br><br>
+        
+        <strong>Auto-placement bekerja:</strong><br>
+        • Browser mengisi dari kiri ke kanan<br>
+        • Jika tidak muat di baris yang sama, pindah ke baris baru<br>
+        • Span menentukan berapa kolom yang dibutuhkan
+    </div>
+    
+    <h2>🧪 Eksperimen: Jika Item C Ada</h2>
+    <div class="container" style="margin-top: 20px;">
+        <div class="item-a">1</div>
+        <div class="item-b">2</div>
+        <!-- <div class="item-d" style="background: #ffcdd2;">3 (Item C)</div> -->
+        <div class="item-d">4</div>
+        <div class="item-e">5</div>
+        <div class="item-f">6</div>
+        <div class="item-g">7</div>
+    </div>
+    
+    <div class="explanation">
+        <strong>Jika Item C tidak dikomentari:</strong><br>
+        • Item C akan mengisi kolom 4 di baris 1<br>
+        • Item D akan pindah ke baris 2 kolom 1<br>
+        • Layout akan bergeser ke bawah
+    </div>
+
+</body>
+</html>
